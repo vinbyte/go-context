@@ -29,7 +29,10 @@ func (r *Repository) GetUser(ctx context.Context) (users []User, err error) {
 	defer rows.Close()
 	for rows.Next() {
 		user := User{}
-		err = rows.Scan(user.Name, user.Email)
+		err = rows.Scan(
+			&user.Name,
+			&user.Email,
+		)
 		if err != nil {
 			return
 		}
