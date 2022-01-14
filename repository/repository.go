@@ -21,7 +21,7 @@ func NewRepository(db *sql.DB) Repository {
 }
 
 func (r *Repository) GetUser(ctx context.Context) (users []User, err error) {
-	query := "SELECT name, email FROM user"
+	query := `SELECT "name", email FROM "user"`
 	rows, err := r.db.QueryContext(ctx, query)
 	if err != nil {
 		return
